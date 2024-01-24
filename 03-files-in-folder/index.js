@@ -15,9 +15,11 @@ fs.readdir(folderPath, { withFileTypes: true }, (err, files) => {
           if (err) {
             console.log(err);
           } else {
-            const fileSize = (stats.size / 1024).toFixed(2);
+            const fileSize = (stats.size / 1024).toFixed(2) + 'kb';
 
-            process.stdout.write(`${file.name} - ${fileExt} - ${fileSize} \n`);
+            process.stdout.write(
+              `${path.parse(file.name).name} - ${fileExt} - ${fileSize} \n`
+            );
           }
         });
       }
